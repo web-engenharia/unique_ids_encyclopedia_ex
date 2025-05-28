@@ -1,3 +1,7 @@
+# Código gerado pela I.A Especializada da Web-Engenharia, usando técnica de aprendizado aprimorada.
+![I.A](./we_artificial_inteligence.ex)
+- Se for preciso te quebrar para te refazer, assim Eu farei. Jeremias 18:1-4
+
 # UniqueIdsEncyclopediaEx
 
 **TODO: Add description**
