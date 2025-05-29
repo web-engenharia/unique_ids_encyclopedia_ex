@@ -1,11 +1,10 @@
 # Unique Id's Encyclopedia Ex
 
-````markdown
 # Benchmark: Geração de IDs
 
 ```bash
 mix run benchmarks/id_generation_benchmark_n.exs
-````
+```
 
 Iniciando benchmarks de geração de ID (cada job executa 1000 vezes internamente)...
 
