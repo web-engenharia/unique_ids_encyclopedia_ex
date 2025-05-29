@@ -1,4 +1,6 @@
 # Unique Id's Encyclopedia Ex
+I am starting to investigate the feasibility of generating unique IDs such as CID, CUID, KSUID, NanoID, Snowflake, ULID, and UUID using GPUs with Elixir. My first step is to analyze the computational characteristics of these algorithms, such as bit manipulation, access timing, and randomness generation, to understand how well they scale to GPU parallelism.
+
 
 # Benchmark: Geração de IDs
 
