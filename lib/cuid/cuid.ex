@@ -12,6 +12,9 @@ defmodule Cuid.Cuid do
   # O Cuid original utiliza um processo OTP para manter o estado (pid, hostname, etc.)
   # Para um uso mais simples, podemos iniciar e parar o processo internamente
   # ou gerenciá-lo com um Supervisor.
+  def start_link(opts \\ []) do
+    Cuid.start_link(opts)
+  end
 
   @doc """
   Gera um novo CUID.
@@ -21,11 +24,12 @@ defmodule Cuid.Cuid do
   continuamente, é mais eficiente gerenciar o processo Cuid com um Supervisor
   e passar o PID para a função `generate/1`.
   """
+  alias Cuid, as: CuidLibrary
   @spec generate() :: String.t()
   def generate() do
     case Cuid.start_link() do
       {:ok, pid} ->
-        cuid = Cuid.generate(pid)
+        cuid = CuidLibrary.generate(pid)
         # Encerra o processo Cuid
         Process.exit(pid, :normal)
         cuid

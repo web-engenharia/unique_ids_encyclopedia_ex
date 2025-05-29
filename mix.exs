@@ -30,7 +30,8 @@ defmodule UniqueIdsEncyclopediaEx.MixProject do
       {:mox, "~> 1.2.0"},
       {:elixir_uuid, "~> 1.2"},
       {:mac_address, "~> 0.0.1"},
-      {:meck, "~> 0.9", only: :test}
+      {:meck, "~> 0.9", only: :test},
+      {:benchee, "~> 1.4", only: :dev}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
