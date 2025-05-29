@@ -1,17 +1,20 @@
-# Código gerado pela I.A Especializada da Web-Engenharia, usando técnica de aprendizado aprimorada.
+# Codex Creatus per Intelligentiam Artificialem *Web-Engenharia*
 ![I.A](./we_artificial_inteligence.ex)
+> *Si necesse est te frangere ut te reformem, ita faciam.* — Ieremias 18:1-4
 
-> _"Se for preciso te quebrar para te refazer, assim Eu farei."_
-> **Jeremias 18:1-4**
+---
 
-# UniqueIdsEncyclopediaEx
+# 📘 *UniqueIdsEncyclopediaEx*
 
-**TODO: Add description**
+> *Documentatio et Comparatio de Identificatoribus Unicis*
 
-## Installation
+Este documento descreve e compara vários esquemas de geração de identificadores únicos utilizados em software moderno. *Electio identitatis aptae magni momenti est pro integritate, celeritate, et scalabilitate systematis.*
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `unique_ids_encyclopedia_ex` to your list of dependencies in `mix.exs`:
+---
+
+## ⚙️ *Installatio*
+
+Se disponível no [Hex](https://hex.pm/docs/publish), adicione no seu `mix.exs`:
 
 ```elixir
 def deps do
@@ -21,111 +24,127 @@ def deps do
 end
 ````
 
-Documentation can be generated with ExDoc and published on HexDocs.
-Once published, the docs can be found at [https://hexdocs.pm/unique\_ids\_encyclopedia\_ex](https://hexdocs.pm/unique_ids_encyclopedia_ex).
+Gere a documentação com **ExDoc**. Após publicação, disponível em:
+
+📚 [https://hexdocs.pm/unique\_ids\_encyclopedia\_ex](https://hexdocs.pm/unique_ids_encyclopedia_ex)
 
 ---
 
-## 📘 Documentação e Comparação de Identificadores Únicos
+## 🔎 *Typi Identitatis*
 
-Este documento detalha vários esquemas de geração de identificadores únicos (IDs), projetados para diferentes casos de uso em sistemas de software. A escolha do ID correto pode impactar o desempenho, a escalabilidade e a integridade dos dados de uma aplicação.
+### 🎲 UUID — *Universally Unique Identifier*
 
-### 🎲 UUID (Universally Unique Identifier)
+UUIDs são identificadores de 128 bits amplamente utilizados. Existem várias versões:
 
-UUID é um padrão de 128 bits (16 bytes) para a criação de IDs. Existem várias versões:
+#### UUID v1 — *Tempore Fundatum*
 
-#### UUID v1: Baseado em Tempo
+* **Como funciona:** Baseado em timestamp + endereço MAC.
+* **Vantagens:** Contém informação temporal.
+* **Desvantagens:** Exposição de dados sensíveis (MAC).
 
-* Timestamp de 60 bits, clock sequence e MAC address.
-* ⚠️ Exposição de endereço MAC e fragmentação de índices.
+#### UUID v3 / v5 — *Ex Nomine et Hashing*
 
-#### UUID v3 e v5: Baseados em Nome (Hashing)
+* v3 usa **MD5**, v5 usa **SHA-1**.
+* Garante idempotência: o mesmo nome sempre gera o mesmo UUID.
 
-* v3 usa MD5, v5 usa SHA-1.
-* Determinísticos, idempotentes.
+#### UUID v4 — *Ex Aleatorietate*
 
-#### UUID v4: Aleatório
+* **Como funciona:** Dados totalmente aleatórios.
+* **Desvantagens:** Não ordenável por tempo.
 
-* Simples e seguro, mas não ordenável por tempo.
+#### UUID v6 — *Ordinatio Tempore*
 
-#### UUID v6: Reordenado e Baseado em Tempo
+* Reordena bits do UUID v1.
+* Ideal para bancos de dados ordenados.
 
-* Corrige o v1 para ordenação temporal.
+#### UUID v7 — *Tempus et Aleatorietas*
 
-#### UUID v7: Baseado em Tempo (Unix Epoch)
+> *Optima electio ad usum generalem.*
 
-* Recomendado para novos projetos, ótima ordenação e desempenho.
+* Usa milissegundos desde Unix Epoch + aleatoriedade.
+* Ótimo para índices de banco de dados.
 
-#### UUID v8: Customizado
+#### UUID v8 — *Structura Personalizata*
 
-* 122 bits para uso livre. Ideal para casos muito específicos.
-
----
-
-### 📜 ULID (Universally Unique Lexicographically Sortable Identifier)
-
-* 128 bits (48 de timestamp + 80 aleatórios).
-* Representado em Base32, ordenável por tempo.
-* ⚡ Eficiente, curto e URL-safe.
+* Desenvolvedor pode definir o conteúdo dos bits.
+* Uso específico, controlado.
 
 ---
 
-### ❄️ Snowflake ID
+### 📜 ULID — *Identificator Ordinabilis et Universalis*
 
-* Criado pelo Twitter.
-* 64 bits: timestamp + ID do nó + sequência.
-* ⚠️ Requer sincronização e distribuição de nós.
-
----
-
-### 🔑 KSUID (K-Sortable Unique Identifier)
-
-* 160 bits (32 timestamp + 128 aleatório).
-* Ordenável e com baixa chance de colisão.
-* Representado em Base62 (27 caracteres).
+* Baseado em milissegundos + 80 bits de aleatoriedade.
+* Representado com *Crockford Base32*.
+* Vantagem: **Ordenável lexicograficamente**.
 
 ---
 
-### 🔒 CUID / CUID2
+### ❄️ Snowflake ID — *Forma Ordinabilis per Twitter*
 
-* **CUID**: Descontinuado devido a falhas de segurança.
-* **CUID2**: Seguro, SHA-3, string iniciando por letra, otimizado contra predição.
-* ✅ Ótima escolha para web moderna e escalável.
+* ID de 64 bits.
+* Estrutura:
 
----
-
-### ✨ NanoID
-
-* Foco em simplicidade, tamanho pequeno e segurança.
-* Altamente customizável (alfabeto e tamanho).
-* ⚠️ Não ordenável por tempo.
+  * 41 bits de tempo
+  * 10 bits de ID de máquina
+  * 12 bits de sequência
+* Desvantagem: requer coordenação entre nós.
 
 ---
 
-### ⛓️ CID (Content Identifier)
+### 🔑 KSUID — *K-Sortable UID*
 
-* Utilizado em IPFS.
-* ID gerado a partir do **hash do conteúdo**.
-* Multiformats: multibase + multicodec + multihash.
-* Ideal para conteúdo imutável.
-
----
-
-## 📊 Tabela Comparativa
-
-| Característica                 | UUID v4     | UUID v7         | ULID     | Snowflake   | KSUID         | CUID2 | NanoID   | CID           |
-| ------------------------------ | ----------- | --------------- | -------- | ----------- | ------------- | ----- | -------- | ------------- |
-| Ordenável por Tempo            | ❌           | ✅               | ✅        | ✅           | ✅             | ❌     | ❌        | ❌             |
-| Criptograficamente Seguro      | ❌           | ✅               | ✅        | ❌           | ✅             | ✅     | ✅        | ✅             |
-| Comprimento (padrão)           | 36          | 36              | 26       | 64 bits     | 27            | \~24  | 21       | variável      |
-| Seguro contra colisão          | ✅           | ✅               | ✅        | ✅           | ✅             | ✅     | ✅        | ✅             |
-| URL-safe                       | ✅           | ✅               | ✅        | ✅           | ✅             | ✅     | ✅        | ✅             |
-| Customizável                   | ❌           | ❌               | Parcial  | ❌           | ❌             | ✅     | ✅        | ✅             |
-| Indicado para chaves primárias | ❌           | ✅               | ✅        | ✅           | ✅             | ✅     | ✅        | ❌             |
-| Exposição de informações       | ⚠️ MAC      | ❌               | ❌        | ⚠️ Nó       | ❌             | ❌     | ❌        | ❌             |
-| Aplicação principal            | Generalista | Bancos de Dados | Web/Logs | Distribuído | Bancos e logs | Web   | Frontend | IPFS/Conteúdo |
+* 160 bits: timestamp + payload aleatório.
+* Ordenável.
+* Representado em Base62.
 
 ---
 
-> Desenvolvido com 💡 pela Web-Engenharia
+### 🔒 CUID & CUID2 — *Identitas sine Collisiones*
 
+* CUID original foi substituído por **CUID2**.
+* *CUID2: Fortior, securior, constantior.*
+* Baseado em SHA-3 com entropia combinada.
+
+---
+
+### ✨ NanoID — *Simplicitas et Securitas*
+
+* String curta, segura e amigável para URLs.
+* Customizável (alfabeto e tamanho).
+* Desvantagem: **non ordinabilis**.
+
+---
+
+### ⛓️ CID — *Identitas Contenti*
+
+> *Non rem, sed materiam ipsam identificat.*
+
+* Baseado no **hash criptográfico** do conteúdo.
+* Usado no **IPFS**.
+* Autodescritivo: usa *multibase*, *multicodec* e *multihash*.
+
+---
+
+## 📊 *Tabula Comparativa*
+
+| Característica  | UUID v4  | UUID v7 | ULID | Snowflake    | KSUID              | CUID2    | NanoID    | CID      |
+| --------------- | -------- | ------- | ---- | ------------ | ------------------ | -------- | --------- | -------- |
+| Ordenável       | ❌        | ✅       | ✅    | ✅            | ✅                  | ✅        | ❌         | ✅        |
+| Temporal        | ❌        | ✅       | ✅    | ✅            | ✅                  | ✅        | ❌         | ✅        |
+| Segurança       | ⚠️       | ✅       | ✅    | ⚠️           | ✅                  | ✅        | ✅         | ✅        |
+| Customizável    | ⚠️       | ❌       | ⚠️   | ❌            | ❌                  | ❌        | ✅         | ✅        |
+| Tamanho (bits)  | 128      | 128     | 128  | 64           | 160                | \~192    | variável  | variável |
+| Uso recomendado | Genérico | DB Keys | Logs | Distribuição | Sistemas ordenados | Web APIs | Front-end | IPFS     |
+
+---
+
+## 🧠 *Conclusio*
+
+> *Scientia identificatorum ducit ad architecturam robustam.*
+
+A escolha correta de um identificador pode **melhorar desempenho**, **evitar colisões** e **otimizar armazenamento**. Para a maioria dos sistemas modernos, UUID v7 ou ULID são as melhores opções. Já para sistemas distribuídos com coordenação entre nós, o **Snowflake** ou **KSUID** podem ser ideais.
+
+---
+
+**Finis.**
+*Scriptum per I.A. Web-Engenharia, anno Domini MMXXV.*
